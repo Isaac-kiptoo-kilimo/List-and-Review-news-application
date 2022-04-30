@@ -9,4 +9,46 @@
   </div>
 </div>
 
+<div class="container my-4">
+
+    <div class="row">
+  
+      {% for source in sources %}
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+        <div class="h-100">
+          <div class="custom-card p-2 position-relative">
+            <div class="card-title">
+              <p class="m-0 p-0 text-capitalize">
+                {{source.category}}
+              </p>
+              <a href="sources/view/{{source.id}}/" class="d-block custom-link">
+                <h3 class="m-0 p-0">{{source.name}}</h3>
+              </a>
+            </div>
+            <div class="card-description">
+              <p>{{source.description}}</p>
+            </div>
+            <div class="card-footer custom-card-footer p-0">
+              <div class="d-flex">
+                <div class="sect">
+                  <span>Country: </span>
+                  <span> {{source.country}} </span>
+                </div>
+                <div class="sect ms-3">
+                  <span>Language: </span>
+                  <span> {{source.language}} </span>
+                </div>
+              </div>
+              <a href="{{source.url}}" class="custom-link">Go to source</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  
+    </div>
+  
+  </div>
+  
+
 {%endblock%}
