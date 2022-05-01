@@ -5,9 +5,8 @@ class Article:
 
     articles_list=[]
 
-    def __init__(self,id_,name_,author,title,image_url,description_,url_,published_at,content):
-        self.id_ =id_
-        self.name_ = name_
+    def __init__(self,source,author,title,image_url,description_,url_,published_at,content):
+        self.source=source
         self.author = author
         self.title = title
         self.image_url=image_url

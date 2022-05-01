@@ -13,6 +13,7 @@ def index():
 def source_view(source_id):
   articles = get_articles_based_on_source(source_id)
   sources = get_sources()
+  print(articles)
   current_source = None
   for source in sources:
     if source["id"] == source_id:
