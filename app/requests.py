@@ -5,9 +5,10 @@ from .models import Source,Article
 api_key = None
 
 base_url = None
+sources_url=None
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,base_url,sources_url
     api_key = app.config['API_KEY']
     base_url = app.config['BASE_URL']
     sources_url = app.config['SOURCES_URL']
@@ -16,18 +17,20 @@ def get_sources():
     '''
     Function that gets the json response to our url request
     '''
-    get_sources_url = base_url.format(api_key) 
-    with urllib.request.urlopen(get_sources_url) as url:
-        get_sources_data = url.read()
-        get_sources_response = json.loads(get_sources_data) 
+    get_sources_url = base_url.format(api_key)
+    sources_results = [] 
+    try:
+        with urllib.request.urlopen(get_sources_url) as response:
+            if response.status == 200:
+                data_ = response.read()
+                response_ = json.loads(data_)
+                sources_ = response_.get('sources')
+                sources_results = process_sources(sources_)         
 
-        sources_result = None 
-
-        if get_sources_response['results']:
-            sources_results_list = get_sources_response['results']
-            sources_result = process_results(sources_results_list)  
-
-    return sources_result
+    except urllib.error.URLError as e:
+        print("HTTP ERROR: ", e)
+    
+    return sources_results
 
 
 def process_results(movie_list):
