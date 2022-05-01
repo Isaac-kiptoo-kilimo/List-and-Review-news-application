@@ -64,7 +64,7 @@ def get_articles_based_on_source(source_id):
 
     with urllib.request.urlopen(url_) as url:
         data_ = url.read()
-        response_ = json.loads(data)
+        response_ = json.loads(data_)
 
         articles = None
         if response_:
