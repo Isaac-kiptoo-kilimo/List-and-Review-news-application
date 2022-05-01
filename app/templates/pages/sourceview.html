@@ -77,9 +77,21 @@
                     </div>
                   </div>
                 </div>
-                
+
                 {% endfor %}
             </div>
+        </div>
+        <div class="col-md-4">
+            <div class="custom-card p-2 p-md-3">
+                <h2 class="text-center mb-3">More News Sources</h2>
+                <div>
+                  {% for source in sources %}
+                  <div class="source-item mb-2">
+                    <a href="/sources/view/{{source.id}}/" class="custom-link d-block">{{source.name}}</a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
         </div>
     </div>
 </div>
