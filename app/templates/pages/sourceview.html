@@ -1,5 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div class="custom-banner">
+    <div class="container py-2 py-md-5">
+      <h1 class="text-center">{{current_source.name}}</h1>
+      <p class="text-center">{{current_source.description}}</p>
+      <div class="row">
+        <div class="col-md-4">
+          <p>
+            <span>Country: </span>
+            <span class="ms-3">{{current_source.country}}</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <span>Language: </span>
+            <span class="ms-3">{{current_source.language}}</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <span>Category: </span>
+            <span class="ms-3 text-capitalize">{{current_source.category}}</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <span>Source: </span>
+            <span class="ms-3">
+              <a href="{{current_source.url}}" class="custom-link" target="_blank">Visit</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div
 
 {% endblock %}
