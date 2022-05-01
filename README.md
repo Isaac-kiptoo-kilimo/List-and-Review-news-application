@@ -1,10 +1,10 @@
-# PASSWORD LOCKER
+# NEWS API APP
 
 ##### By Isaac kiptoo
-### Password-Locker
+### NEWS API
 
-This project was developed using python.
-This project was implemented on 24/04/2022.
+This project was developed using Flask.
+This project was implemented on 1/54/2022.
 ## Table of Content
 
 + [Description](#description)
