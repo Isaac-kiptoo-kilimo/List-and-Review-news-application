@@ -33,7 +33,7 @@ def get_sources():
     return sources_results
 
 
-def process_results(movie_list):
+def process_sources(movie_list):
     '''
     Function  that processes the movie result and transform them to a list of Objects
     Args:
@@ -41,22 +41,21 @@ def process_results(movie_list):
     Returns :
         movie_results: A list of movie objects
     '''
-    movie_results = [] 
+    sources = [] 
 
-    for movie_item in movie_list:
-        id = movie_item.get('id')
-        title = movie_item.get('title')
-        overview = movie_item.get('overview')
-        poster = movie_item.get('poster_path')
-        vote_average = movie_item.get('vote_average')
-        vote_count = movie_item.get('vote_count')
+    for source in sources_list:
+        id_ = source.get('id')
+        name = source.get('name')
+        description = source.get('description')
+        url = source.get('url')
+        category = source.get('category')
+        language = source.get('language')
+        country = source.get('country')
 
-        if poster: # check if the movie_item has a poster
-            movie_object = Movie(id, title, overview, poster, vote_average, vote_count) # create the movie object. 
-            movie_results.append(movie_object)
+        source_object = Source(id_,name,description,url,category,language,country)
+        sources.append(source)
     
-    return movie_results 
-
+    return sources 
 def get_movie(id):
     get_movie_details_url = base_url.format(id,api_key)
 
