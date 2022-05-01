@@ -6,12 +6,14 @@ api_key = None
 
 base_url = None
 sources_url=None
+specific_source_articles_url = None
 
 def configure_request(app):
-    global api_key,base_url,sources_url
+    global api_key,base_url,sources_url,specific_source_articles_url
     api_key = app.config['API_KEY']
     base_url = app.config['BASE_URL']
     sources_url = app.config['SOURCES_URL']
+    specific_source_articles_url = app.config['SPECIFIC_SOURCE_ARTICLES_URL']
 
 def get_sources():
     '''
@@ -70,17 +72,37 @@ def get_articles_based_on_source(source_id):
 
     return articles
     
-def search_movie(movie_name):
-    search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
-    with urllib.request.urlopen(search_movie_url) as url:
-        search_movie_data = url.read()
-        search_movie_response = json.loads(search_movie_data)
 
-        search_movie_results = None
+def process_articles(article_list):
+    articles = []
 
-        if search_movie_response['results']:
-            search_movie_list = search_movie_response['results']
-            search_movie_results = process_results(search_movie_list)
+    for article in article_list:
+        source = article.get('source')
+        author = article.get('author')
+        title = article.get('title')
+        image_url = article.get('urlToImage')
+        description_ = article.get('description')
+        url_ = article.get('url')
+        published_at = article.get('publishedAt')
+        content = article.get('content')
+
+        article_object = Article(source, author, title, image_url, description_, url_, published_at, content)
+        articles.append(article_object)
+
+    return articles
 
 
-    return search_movie_results
+# def search_movie(movie_name):
+#     search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
+#     with urllib.request.urlopen(search_movie_url) as url:
+#         search_movie_data = url.read()
+#         search_movie_response = json.loads(search_movie_data)
+
+#         search_movie_results = None
+
+#         if search_movie_response['results']:
+#             search_movie_list = search_movie_response['results']
+#             search_movie_results = process_results(search_movie_list)
+
+
+#     return search_movie_results
