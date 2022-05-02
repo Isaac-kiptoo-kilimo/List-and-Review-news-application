@@ -10,9 +10,13 @@
 </head>
 
 <body>
+  {% block navbar %}
   {% include 'components/navbar.html' %}
+  {% endblock %}
+
+
   {% block content %}
-  {% endblock%}
+  {% endblock %}
   {% include 'components/footer.html' %}
 
 </body>
