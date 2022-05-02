@@ -38,17 +38,29 @@
                   <span>Language: </span>
                   <span> {{source.language}} </span>
                 </div>
+              
               </div>
               <a href="{{source.url}}" class="custom-link">Go to source</a>
+
+              
             </div>
           </div>
         </div>
       </div>
+      
       {% endfor %}
-  
+
     </div>
-  
   </div>
+ 
   
+  {% for article in articles %}
+      
+      <div class=" sect ms-3 bg-danger">
+        <span>published at: </span>
+        <span> {{article.published_at}} </span>
+      </div>
+
+  {% endfor %}
 
 {% endblock %}
