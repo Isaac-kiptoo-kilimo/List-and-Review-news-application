@@ -47,8 +47,8 @@
                         <img src="{{article.image_url}}" loading="lazy" alt="{{article.title}}" class="img-top" />
                       </div>
                       <div class="card-title p-2 p-md-3">
-                        <h3 class="text-white">Article title</h3>
-                        <h3 class="m-0 p-0 bg-warning">{{article.title}}</h3>
+                        <h3 class="text-white text-center">Article Title</h3>
+                        <h3 class="m-0 p-0 ">{{article.title}}</h3>
                       </div>
                       <div class="custom-card-footer p-2 p-md-3">
                         <div class="d-flex">
@@ -62,9 +62,13 @@
                               <a href="{{article.url}}" class="custom-link">Go to source</a>
                             </span>
                           </div>
+                          <div class="sect ms-4">
+                            <span>Date Published: </span>
+                            <span> {{article.published_at}} </span>
+                          </div>
                         </div>
                       </div>
-                      <div class="card-description p-2 p-md-3">
+                      <div class="card-description p-2 p-md-3 ">
                         <p>{{article.description}}</p>
                       </div>
                       <div class="content p-2 p-md-3">
