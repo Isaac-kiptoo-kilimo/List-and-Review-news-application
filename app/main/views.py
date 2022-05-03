@@ -19,3 +19,8 @@ def source_view(source_id):
     if source["id"] == source_id:
       current_source = source
   return render_template('pages/sourceview.html', current_source=current_source, sources=sources, articles=articles)
+
+# @main.route('/general/')
+# def index():
+#   sources = get_sources()
+#   return render_template('pages/index.html', sources=sources)

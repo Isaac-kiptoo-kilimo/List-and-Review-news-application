@@ -95,3 +95,39 @@ def process_articles(article_list):
         articles.append(article_object)
 
     return articles
+
+# def get_categories():
+#     '''
+#     Function that gets the json response to our url request
+#     '''
+#     get_sources_url = sources_url.format(api_key)
+#     categories_results = [] 
+#     try:
+#         with urllib.request.urlopen(get_sources_url) as response:
+#             if response.status == 200:
+#                 data_ = response.read()
+#                 response_ = json.loads(data_)
+#                 categories_ = response_.get('categories')
+#                 categories_results = process_categories(categories_)         
+
+#     except urllib.error.URLError as e:
+#         print("HTTP ERROR: ", e)
+    
+#     return categories_results
+
+# def process_categories(categories_list):
+
+#     categories = [] 
+
+#     for category in categories_list:
+#         general=category.get('general')
+#         busines= category.get('business')
+#         sports=category.get('sports')
+#         entertainment =category.get('entertainment')
+#         technology =category.get('technology')
+        
+
+#         category_object = Category(general,busines,sports,entertainment,technology)
+#         categories.append(category)
+
+#     return categories
