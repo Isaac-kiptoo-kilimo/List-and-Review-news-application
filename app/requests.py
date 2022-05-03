@@ -37,11 +37,11 @@ def get_sources():
 
 def process_sources(sources_list):
     '''
-    Function  that processes the movie result and transform them to a list of Objects
+    Function  that processes the sources result and transform them to a list of Objects
     Args:
-        movie_list: A list of dictionaries that contain movie details
+        movie_list: A list of dictionaries that contain sources details
     Returns :
-        movie_results: A list of movie objects
+        source_results: A list of source objects
     '''
     sources = [] 
 
@@ -95,6 +95,23 @@ def process_articles(article_list):
         articles.append(article_object)
 
     return articles
+
+
+def search_article(article_name):
+    
+    search_article_url = 'https://newsapi.org/v2/search/articles?api_key={}&query={}'.format(api_key,article_name)
+    with urllib.request.urlopen(search_article_url) as url:
+        search_article_data = url.read()
+        search_article_response = json.loads(search_article_data)
+
+        search_article_results = None
+
+        if search_article_response['results']:
+            search_article_list = search_article_response['results']
+            search_article_results = process_articles(search_article_list)
+
+
+    return search_article_results
 
 # def get_categories():
 #     '''
